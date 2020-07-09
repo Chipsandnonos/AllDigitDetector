@@ -4,4 +4,5 @@ class Neuron():
 
     def __init__(self):
         self.bias = random.random()
+        self.activation = None
 
