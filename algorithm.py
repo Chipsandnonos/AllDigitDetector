@@ -1,7 +1,7 @@
 import layer
 from mnist import MNIST
 import numpy as np
-
+import random
 
 class NueralNetwork():
 
@@ -23,9 +23,9 @@ class NueralNetwork():
         activations = self.translate()
 
         for i in range (len(self.layers)):
-
             self.layers[i].update_activations(activations)
             activations = self.layers[i].collect_activations()
+        self.index += 1
 
 
     def sigmoid(self, x):
@@ -42,6 +42,32 @@ class NueralNetwork():
                 activations.append(self.sigmoid(self.train_images[self.index][x + y*28]))
         return activations
 
+    def learn(self):
+       self.run_entry()
+       actual = []
+       for i in range (10):
+           if (i == self.index):
+               actual.append(i)
+           else:
+               actual.append(0)
+       costvector = []
+
+       for i in range (10):
+           cost = (self.layer4[i] - actual[i])**2
+           costvector.append(cost)
+
+
+
+
+
+        #get all the vectors for n training example
+
+        #averages
+        #applies to the actual weights and biases
+        
+
 #weird that its all .99 ?
 nn = NueralNetwork()
-nn.run_entry()
+print(nn.train_labels[1], type(nn.train_labels[1]))
+#nn.run_entry()
+

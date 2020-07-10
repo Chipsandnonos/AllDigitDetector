@@ -11,10 +11,9 @@ class Layer( ) :
         self.weights = []
         for i in range(self.n_laysize):
             self.neurons.append(nueron.Neuron())
-        self.neurons = np.array(self.neurons).T
+        #self.neurons = np.array(self.neurons).T
 
         if prev_laysize != 0:
-            self.n_sub_1_laysize = prev_laysize
             for n in range(self.n_laysize):
                 row = []
                 for i in range(prev_laysize):
